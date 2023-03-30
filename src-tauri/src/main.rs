@@ -8,16 +8,16 @@ fn greet(name: &str) -> String {
     format!("Hello, {}! You've been greeted from Rust!", name)
 }
 
-use tauri::{SystemTray, CustomMenuItem, SystemTrayMenu};
+mod tray;
+
 
 
 fn main() {
-    let tray_menu = SystemTrayMenu::new(); // 插入菜单项
-    let system_tray = SystemTry::new().with_menu(tray_menu);
     let context = tauri::generate_context!();
     tauri::Builder::default()
-        .system_tray(system_tray)
-        .invoke_handler(tauri::SystemTray::default())
+        .system_tray(tray::menu())
+        .invoke_handler(tauri::generate_handler![greet])
+        .on_system_tray_event(tray::system_tray_handler)
         .run(context)
         .expect("error while running tauri application")
 }
