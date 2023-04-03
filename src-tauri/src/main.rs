@@ -10,8 +10,6 @@ fn greet(name: &str) -> String {
 
 mod tray;
 
-
-
 fn main() {
     let context = tauri::generate_context!();
     tauri::Builder::default()

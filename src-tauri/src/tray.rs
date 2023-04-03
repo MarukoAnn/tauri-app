@@ -1,7 +1,13 @@
+#![cfg_attr(not(debug_assertions), windows_subsystem = "windows")]
+
 use tauri::Manager;
 use tauri::{
     AppHandle, CustomMenuItem, SystemTray, SystemTrayEvent, SystemTrayMenu, SystemTrayMenuItem,
 };
+use tauri::api::process::restart;
+
+use tauri::Icon;
+use std::path::PathBuf;
 // -> 后面指定类型
 // 缩小菜单
 pub fn menu() -> SystemTray {
@@ -69,10 +75,16 @@ pub fn system_tray_handler(app: &AppHandle, event: SystemTrayEvent) {
             }
             "relaunch" => {
                 print!("重启");
-                // window.relaunch().unwrap();
+                restart(&app.env());
             }
             "change_icon" => {
-                print!("更改图标")
+                print!("更改图标");
+                let icon_path = "../icons/2.png";
+                // print!("PathBuf::from(icon_path), %s", PathBuf::from(icon_path));
+                let new_icon = Icon::File(PathBuf::from(icon_path));
+                // let new_icon = Icon::Raw(include_bytes!("icons/2.png").to_Vec());
+                // let new_icon = Icon::Raw(include_bytes!("../icons/2.png").to_vec());
+                app.tray_handle().set_icon(new_icon).unwrap();
             }
             _ => {}
         },
