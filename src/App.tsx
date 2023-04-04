@@ -2,15 +2,28 @@ import { useState } from "react";
 import reactLogo from "./assets/react.svg";
 import { invoke } from "@tauri-apps/api/tauri";
 import { relaunch } from "@tauri-apps/api/process"
+import { loginWin, createWin } from "./windows/actions";
+import Windows from "./windows/index";
 import "./App.css";
-
+new Windows();
 function App() {
   const [greetMsg, setGreetMsg] = useState("");
   const [name, setName] = useState("");
 
   async function greet() {
+    console.log("进来了")
     // Learn more about Tauri commands at https://tauri.app/v1/guides/features/command
-    setGreetMsg(await invoke("greet", { name }));
+    // setGreetMsg(await invoke("greet", { name }));
+    await createWin({
+      label: 'Manage',
+      title: '管理页面',
+      url: '/manage',
+      width: 600,
+      height: 450,
+      minWidth: 300,
+      minHeight: 200,
+      decorations: true
+  })
   }
 
   async function relaunchFunc() {

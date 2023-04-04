@@ -16,6 +16,9 @@
       "shell": {
         "all": false,
         "open": true
+      },
+      "window": {
+        "create": true
       }
     },
     "systemTray": {
@@ -46,7 +49,19 @@
         "resizable": true,
         "title": "tauri-app",
         "width": 800,
-        "height": 600
+        "height": 600,
+        "visible": true
+      },
+      {
+        "width": 250,
+        "height": 250,
+        "decorations": false,
+        "url": "/tauri.svg",
+        "label": "splashscreen",
+        "center": true,
+        "fullscreen": false,
+        "resizable": false,
+        "visible": false
       }
     ]
   }
