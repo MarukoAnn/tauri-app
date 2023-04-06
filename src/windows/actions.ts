@@ -33,12 +33,12 @@ export async function setWin(type: string) {
  */
 export async function loginWin() {
     await createWin({
-        label: 'Login',
+        label: 'login',
         title: '登录',
         url: '/login',
         width: 320,
         height: 420,
-        resizable: false,
+        resizable: true,
         alwaysOnTop: true,
     })
 }

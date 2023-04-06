@@ -88,9 +88,15 @@ class Windows {
       await appWindow.setFocus();
     });
 
+    // 关闭
+    await listen("win-close", async () => {
+      // if (!appWindow.label.includes("main")) return;
+      await appWindow.close();
+    });
+
     // 隐藏窗体
     await listen("win-hide", async () => {
-      if (!appWindow.label.includes("main")) return;
+      // if (!appWindow.label.includes("main")) return;
       await appWindow.hide();
     });
 
@@ -99,6 +105,8 @@ class Windows {
       setWin("logout");
       await exit();
     });
+
+
     // 重启应用
     await listen("win-relaunch", async () => {
       await relaunch();

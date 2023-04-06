@@ -18,7 +18,9 @@
         "open": true
       },
       "window": {
-        "create": true
+        "create": true,
+        "close": true,
+        "unmaximize": true
       }
     },
     "systemTray": {
@@ -50,7 +52,8 @@
         "title": "tauri-app",
         "width": 800,
         "height": 600,
-        "visible": true
+        "visible": false,
+        "url": "/home"
       },
       {
         "width": 250,
