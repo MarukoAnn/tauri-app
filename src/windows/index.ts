@@ -91,7 +91,8 @@ class Windows {
     // 关闭
     await listen("win-close", async () => {
       // if (!appWindow.label.includes("main")) return;
-      await appWindow.close();
+      console.log('监听, 关闭事件');
+      // await appWindow.close();
     });
 
     // 隐藏窗体

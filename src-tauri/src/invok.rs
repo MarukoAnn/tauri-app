@@ -19,10 +19,6 @@ pub fn greet(name: &str) -> String {
 
 #[tauri::command]
 pub fn close_window(window: tauri::Window) {
-    // if window.get_window("login") {
-    //     login.close().unwrap();
-    // }
-    // println!("%s", window.get_window("login"))
     window.get_window("login").unwrap().close().unwrap();
     window.get_window("main").unwrap().show().unwrap();
 }

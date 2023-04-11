@@ -3,6 +3,7 @@
 #![cfg_attr(not(debug_assertions), windows_subsystem = "windows")]
 mod invok;
 mod tray;
+mod listen;
 fn main() {
     let context = tauri::generate_context!();
     tauri::Builder::default()

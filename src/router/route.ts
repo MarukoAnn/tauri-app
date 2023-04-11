@@ -16,5 +16,10 @@ const routers: router[] = [
         name: 'home',
         component: lazy(() => import('../pages/home/home')),
     },
+    {
+        path: '/about',
+        name: 'about',
+        component: lazy(() => import('../pages/about/about')),
+    },
 ];
 export default routers

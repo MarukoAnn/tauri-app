@@ -20,6 +20,8 @@
       "window": {
         "create": true,
         "close": true,
+        "show": true,
+        "hide": true,
         "unmaximize": true
       }
     },

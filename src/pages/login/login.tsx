@@ -1,31 +1,28 @@
 import React from "react";
+import { observer } from 'mobx-react-lite'
 import useUtilsHooks from "../../hooks/useUtilsHook";
-import { createWin, setWin, getWin } from "../../windows/actions";
 import { invoke } from "@tauri-apps/api/tauri";
-const Login = () => {
+import store from "../../store";
+import styles from './login.module.scss';
+const { useMobxLoginStore } = store;
+const Login: React.FC = () => {
     const navigation = useUtilsHooks();
     const loginClick = async () => {
-        // await setWin('close');
+        useMobxLoginStore.setToken('xxx');
         navigation('/home');
         invoke('close_window')
-    //    let mianWin = await getWin('main');
-    //    mianWin?.show();
-        // await createWin({
-        //     label: 'main',
-        //     title: '首页',
-        //     url: '/home',
-        //     width: 800,
-        //     height: 600,
-        //     minWidth: 300,
-        //     minHeight: 200,
-        //     decorations: true
-        // })
     }
-
-    return (<div>
-        这个是login
-        <button onClick={loginClick}> 登陆 </button>
-    </div>)
+    return (
+        <div className={styles.container}>
+            <div className={styles.user}>
+                <input type="text" />
+            </div>
+            <div className={styles.password}>
+                <input type="password" />
+            </div>
+            <button className={styles.btn} onClick={loginClick}> 登陆 </button>
+        </div>
+    )
 }
 
-export default Login;
+export default observer(Login);

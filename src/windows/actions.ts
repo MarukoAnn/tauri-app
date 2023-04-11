@@ -39,8 +39,6 @@ export async function loginWin() {
         width: 320,
         height: 420,
         resizable: true,
-        alwaysOnTop: true,
+        alwaysOnTop: true
     })
 }
-
-// ...Copied successfully!
